@@ -14,7 +14,7 @@ just _info "Starting application..."
 just start
 
 just _info "Waiting for application to be UP..."
-until curl -s -L http://localhost:${CONTAINER_PORT} | grep -q "OWASP Node Goat"; do
+until curl -s -L http://localhost:${CONTAINER_PORT}/login | grep -q "OWASP Node Goat Project"; do
   sleep 3
 done
 just _info "Application is UP!"
