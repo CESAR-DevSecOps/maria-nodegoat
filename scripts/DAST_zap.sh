@@ -13,11 +13,6 @@ ZAP_NONE=4
 just _info "Starting application..."
 just start
 
-# Ensure reports/zap directory exists and has the correct permissions for the ZAP container.
-mkdir -p reports/zap
-sudo chown -R $(id -u):$(id -g) reports/zap
-chmod -R u+rwx reports/zap
-
 just _info "Waiting for application to be UP..."
 until curl -s -L http://localhost:${CONTAINER_PORT} | grep -q "OWASP Node Goat"; do
   sleep 3
@@ -51,3 +46,4 @@ fi
 
 just _info "No vulnerabilities found! You are allowed to commit!"
 exit 0
+
